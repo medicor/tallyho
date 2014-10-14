@@ -1,0 +1,29 @@
+{
+  "name": "TallyHo",
+  "version": "0.0.1",
+  "authors": [
+    "medicor <roger@medicor.se>"
+  ],
+  "description": "Time recording and invoicing",
+  "main": "index.html",
+  "keywords": [
+    "time",
+    "tracking",
+    "invoice"
+  ],
+  "license": "MIT",
+  "homepage": "index.html",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#~0.4.1",
+    "paper-elements": "Polymer/paper-elements#~0.4.1",
+    "core-elements": "Polymer/core-elements#~0.4.1",
+    "firebase": "~1.1.1"
+  }
+}

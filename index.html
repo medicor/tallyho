@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <title>core-scaffold</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+		<script src='https://cdn.firebase.com/js/client/1.1.1/firebase.js'></script>
+		<script>
+	        var firebase = new Firebase('https://medicor.firebaseio.com/');
+		</script>
+		<script src="bower_components/platform/platform.js"></script>
+		<link rel="import" href="bower_components/core-ajax/core-ajax.html">
+		<link rel="import" href="bower_components/core-scaffold/core-scaffold.html">
+		<link rel="import" href="bower_components/core-header-panel/core-header-panel.html">
+		<link rel="import" href="bower_components/core-menu/core-menu.html">
+		<link rel="import" href="bower_components/core-item/core-item.html">
+		<link rel="import" href="bower_components/core-icon-button/core-icon-button.html">
+		<link rel="import" href="bower_components/core-toolbar/core-toolbar.html">
+		<link rel="import" href="bower_components/core-menu/core-submenu.html">
+		<link rel="stylesheet" href="style.css" type="text/css" media="all" />
+	</head>
+	<body unresolved>
+<!--
+        <core-ajax url="//cloud.medicor.se:3148/json" handleAs="json"></core-ajax>
+    	<script>
+    		window.addEventListener('polymer-ready', function(e) {
+        		var ajax = document.querySelector('core-ajax');
+        		ajax.addEventListener('core-response', function(e) {
+        			console.log(this.response);
+       		    });
+       	    	ajax.go(); // Call its API methods.
+    		});
+    	</script>
+-->
+        <core-scaffold>
+            <core-header-panel navigation flex mode="seamed">
+                <core-toolbar style="background-color: #526E9C; color: #fff;">Application</core-toolbar>
+                <core-menu>
+                    <core-item icon="settings" label="item1"></core-item>
+                    <core-item icon="settings" label="item2"></core-item>
+                </core-menu>
+                </core-header-panel>
+            <div tool>Title</div>
+            <div class="content">Content goes here...</div>
+        </core-scaffold>
+    </body>
+</html>
