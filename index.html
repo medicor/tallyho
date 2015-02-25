@@ -1,48 +1,76 @@
 <!DOCTYPE html>
 <html>
-	<head>
-        <title>TallyHo</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-        <meta name="mobile-web-app-capable" content="yes">
-        <meta name="apple-mobile-web-app-capable" content="yes">
-		<script src='https://cdn.firebase.com/js/client/1.1.1/firebase.js'></script>
-		<script>
-	        var firebase = new Firebase('https://medicor.firebaseio.com/');
-		</script>
-		<script src="bower_components/platform/platform.js"></script>
-		<link rel="import" href="bower_components/core-ajax/core-ajax.html">
-		<link rel="import" href="bower_components/core-scaffold/core-scaffold.html">
-		<link rel="import" href="bower_components/core-header-panel/core-header-panel.html">
-		<link rel="import" href="bower_components/core-menu/core-menu.html">
-		<link rel="import" href="bower_components/core-item/core-item.html">
-		<link rel="import" href="bower_components/core-icon-button/core-icon-button.html">
-		<link rel="import" href="bower_components/core-toolbar/core-toolbar.html">
-		<link rel="import" href="bower_components/core-menu/core-submenu.html">
-		<link rel="stylesheet" href="style.css" type="text/css" media="all" />
-	</head>
-	<body unresolved>
-<!--
-        <core-ajax url="//cloud.medicor.se:3148/json" handleAs="json"></core-ajax>
-    	<script>
-    		window.addEventListener('polymer-ready', function(e) {
-        		var ajax = document.querySelector('core-ajax');
-        		ajax.addEventListener('core-response', function(e) {
-        			console.log(this.response);
-       		    });
-       	    	ajax.go(); // Call its API methods.
-    		});
-    	</script>
--->
-        <core-scaffold>
-            <core-header-panel navigation flex mode="seamed">
-                <core-toolbar style="background-color: #526E9C; color: #fff;">Application</core-toolbar>
-                <core-menu>
-                    <core-item icon="settings" label="item1"></core-item>
-                    <core-item icon="settings" label="item2"></core-item>
-                </core-menu>
-                </core-header-panel>
-            <div tool>Title</div>
-            <div class="content">Content goes here...</div>
-        </core-scaffold>
-    </body>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <title>TallyHo</title>
+  <script src="bower_components/webcomponentsjs/webcomponents.min.js"></script>
+  <link rel="import" href="bower_components/core-animated-pages/core-animated-pages.html">
+  <link rel="import" href="bower_components/core-animated-pages/transitions/slide-from-right.html">
+  <link rel="import" href="bower_components/core-toolbar/core-toolbar.html">
+  <link rel="import" href="bower_components/core-scaffold/core-scaffold.html">
+  <link rel="import" href="bower_components/core-icon-button/core-icon-button.html">
+  <link rel="import" href="bower_components/core-icon/core-icon.html">
+  <link rel="import" href="bower_components/core-menu/core-menu.html">
+  <link rel="import" href="bower_components/paper-item/paper-item.html">
+  <link rel="import" href="bower_components/flatiron-director/flatiron-director.html">
+  <link rel="import" href="bower_components/font-roboto/roboto.html">
+  <link rel="import" href="bower_components/core-a11y-keys/core-a11y-keys.html">
+  <link rel="import" href="bower_components/core-ajax/core-ajax.html">
+  <link rel="stylesheet" href="styles.css" shim-shadowdom>
+</head>
+<!-- Read more at https://www.polymer-project.org/articles/spa.html -->
+<body unresolved fullbleed>
+<template is="auto-binding" id="t">
+
+  <flatiron-director route="{{route}}" autoHash></flatiron-director>
+  <core-a11y-keys id="keys" target="{{parentElement}}" keys="up down left right space space+shift" on-keys-pressed="{{keyHandler}}"></core-a11y-keys>
+
+  <core-scaffold id="scaffold">
+
+    <nav>
+      <core-toolbar>
+        <span>Single Page Polymer</span>
+      </core-toolbar>
+      <core-menu valueattr="hash" selected="{{route}}" selectedModel="{{selectedPage}}" on-core-select="{{menuItemSelected}}">
+        <template repeat="{{page, i in pages}}">
+          <paper-item hash="{{page.hash}}" noink>
+            <core-icon icon="label{{route != page.hash ? '-outline' : ''}}"></core-icon >
+            <a href="#{{page.hash}}">{{page.name}}</a>
+          </paper-item>
+        </template>
+      </core-menu>
+    </nav>
+
+    <core-toolbar tool flex>
+      <div flex>{{selectedPage.page.label}}</div>
+      <core-icon-button icon="refresh"></core-icon-button>
+      <core-icon-button icon="add"></core-icon-button>
+    </core-toolbar>
+
+    <div layout horizontal center-center fit>
+      <core-animated-pages id="pages" selected="{{route}}" valueattr="hash" transitions="slide-from-right" on-tap="{{cyclePages}}">
+        <template repeat="{{page, i in pages}}">
+          <section hash="{{page.hash}}" layout vertical center-center>
+            <div>{{page.name}}</div>
+          </section>
+        </template>
+      </core-animated-pages>
+    </div>
+
+  </core-scaffold>
+</template>
+
+<script src="app.js"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  //ga('create', 'UA-43475701-2', 'auto');
+  //ga('create', 'UA-39334307-1', 'auto');
+  //ga('send', 'pageview');
+</script>
+</body>
 </html>
