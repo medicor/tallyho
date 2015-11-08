@@ -1,33 +1,34 @@
 {
-    "name": "TallyHo",
-    "version": "0.1.0",
-    "authors": [
-        "Roger Salomonsson <roger@medicor.se>"
-    ],
-    "license": "MIT",
-    "private": true,
-    "ignore": [
-        "**/.*",
-        "node_modules",
-        "bower_components",
-        "test",
-        "tests"
-    ],
-    "dependencies": {
-        "polymer": "polymer/polymer#^1.0.0",
-        "iron-ajax": "polymerelements/iron-ajax#^1.0.0",
-        "iron-flex-layout": "polymerelements/iron-flex-layout#^1.0.0",
-        "iron-icon": "polymerelements/iron-icon#^1.0.0",
-        "iron-icons": "polymerelements/iron-icons#^1.0.0",
-        "iron-selector": "polymerelements/iron-selector#^1.0.0",
-        "paper-drawer-panel": "polymerelements/paper-drawer-panel#^1.0.0",
-        "paper-header-panel": "polymerelements/paper-header-panel#^1.0.0",
-        "paper-icon-button": "polymerelements/paper-icon-button#^1.0.0",
-        "paper-item": "polymerelements/paper-item#^1.0.0",
-        "paper-material": "polymerelements/paper-material#^1.0.0",
-        "paper-menu": "polymerelements/paper-menu#^1.0.0",
-        "paper-styles": "polymerelements/paper-styles#^1.0.0",
-        "paper-toggle-button": "polymerelements/paper-toggle-button#^1.0.0",
-        "paper-toolbar": "polymerelements/paper-toolbar#^1.0.0"
-    }
+  "name": "TallyHo",
+  "version": "0.1.0",
+  "authors": [
+    "Roger Salomonsson <roger@medicor.se>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "polymer/polymer#^1.0.0",
+    "iron-ajax": "polymerelements/iron-ajax#^1.0.0",
+    "iron-flex-layout": "polymerelements/iron-flex-layout#^1.0.0",
+    "iron-icon": "polymerelements/iron-icon#^1.0.0",
+    "iron-icons": "polymerelements/iron-icons#^1.0.0",
+    "iron-selector": "polymerelements/iron-selector#^1.0.0",
+    "paper-drawer-panel": "polymerelements/paper-drawer-panel#^1.0.0",
+    "paper-header-panel": "polymerelements/paper-header-panel#^1.0.0",
+    "paper-icon-button": "polymerelements/paper-icon-button#^1.0.0",
+    "paper-item": "polymerelements/paper-item#^1.0.0",
+    "paper-material": "polymerelements/paper-material#^1.0.0",
+    "paper-menu": "polymerelements/paper-menu#^1.0.0",
+    "paper-styles": "polymerelements/paper-styles#^1.0.0",
+    "paper-toggle-button": "polymerelements/paper-toggle-button#^1.0.0",
+    "paper-toolbar": "polymerelements/paper-toolbar#^1.0.0",
+    "firebase-element": "GoogleWebComponents/firebase-element#~1.0.8"
+  }
 }
