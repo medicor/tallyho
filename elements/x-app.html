@@ -55,14 +55,11 @@
 		}
 	</style>
 	<template>
-		<firebase-auth id="authenticator" user="{{user}}" location="https://medicor.firebaseio.com" ref="{{refauth}}" provider="github"></firebase-auth>
+		<firebase-auth id="authenticator" user="{{user}}" location="https://tallyho.firebaseio.com" ref="{{refauth}}" provider="github"></firebase-auth>
 		<paper-dialog modal opened="{{!user}}" entry-animation="scale-up-animation" exit-animation="fade-out-animation">
-			<h2>Oh hai! Please sign in</h2>
+			<h2>Logga in</h2>
 			<div>
-				<div class="google-sign-in" tabindex="0" on-tap="signIn">
-					<span class="google-sign-in-icon"></span>
-					<span class="google-sign-in-label">Google</span>
-				</div>
+				<button on-tap="signIn">Logga in</button>
 			</div>
 		</paper-dialog>
 		<paper-drawer-panel id="navDrawerPanel" responsive-width="1280px">
@@ -74,12 +71,10 @@
 					<!-- List Toolbar -->
 					<paper-toolbar>
 						<paper-icon-button icon="menu" paper-drawer-toggle></paper-icon-button>
-						<button on-tap="login">Login</button>
-						<button on-tap="logout">Logout</button>
 					</paper-toolbar>
 					<!-- List -->
 					<paper-menu class="list" on-iron-activate="_listTap">
-						<firebase-collection location="https://medicor.firebaseio.com/companies/customers" data="{{customers}}"></firebase-collection>
+						<firebase-collection location="https://tallyho.firebaseio.com/{{user.uid}}/customers" data="{{customers}}"></firebase-collection>
 						<template is="dom-repeat" items="[[customers]]" as="customer">
 							<paper-item>
 								[[customer.__firebaseKey__]]
@@ -101,7 +96,7 @@
 							<li>Use http://cheonhyangzhang.github.io/paper-typeahead-input/components/paper-typeahead-input/</li>
 						</ul>
 						<p>Status: {{computeLoginStatus(user)}}</p>
-						<pre>{{user.uid}}</pre>
+						<pre>User: {{user.uid}}</pre>
 					</div>
 				</paper-header-panel>
 			</paper-drawer-panel>
@@ -117,21 +112,16 @@
 				}
 			},
 
-			login: function() {
+			signIn: function() {
 				this.$.authenticator.login();
 			},
-			logout: function() {
+			signOut: function() {
 				this.$.authenticator.logout();
+				this.user = null;
 			},
-			onLogin: function(e) {
-				console.log(e);
-			},
-			computeLoginStatus: function(user) {
-				console.log(user);
-				if (user) {
-					return 'Logged in';
-				}
-				return 'Not authenticated';
+			computeLoginStatus(a) {
+				console.log(this.user, a);
+				return JSON.stringify(a, null, '\t');
 			},
 			_computeListWidth: function(isMobile) {
 				// when in mobile screen size, make the list be 100% width to cover the whole screen
