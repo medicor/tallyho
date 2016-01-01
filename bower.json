@@ -31,6 +31,7 @@
     "paper-toolbar": "PolymerElements/paper-toolbar#latest",
     "paper-dialog": "PolymerElements/paper-dialog#latest",
     "neon-animation": "PolymerElements/neon-animation#latest",
-    "firebase-element": "GoogleWebComponents/firebase-element#latest"
+    "firebase-element": "GoogleWebComponents/firebase-element#latest",
+    "paper-datatable": "latest"
   }
 }
