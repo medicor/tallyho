@@ -1,6 +1,6 @@
 {
-  "name": "TallyHo",
-  "version": "0.1.0",
+  "name": "tallyho",
+  "version": "0.1.1",
   "authors": [
     "Roger Salomonsson <roger@medicor.se>"
   ],
@@ -14,24 +14,23 @@
     "tests"
   ],
   "dependencies": {
-    "polymer": "Polymer/polymer#latest",
-    "iron-ajax": "PolymerElements/iron-ajax#latest",
-    "iron-flex-layout": "PolymerElements/iron-flex-layout#latest",
-    "iron-icon": "PolymerElements/iron-icon#latest",
-    "iron-icons": "PolymerElements/iron-icons#latest",
-    "iron-selector": "PolymerElements/iron-selector#latest",
-    "paper-drawer-panel": "PolymerElements/paper-drawer-panel#latest",
-    "paper-header-panel": "PolymerElements/paper-header-panel#latest",
-    "paper-icon-button": "PolymerElements/paper-icon-button#latest",
-    "paper-item": "PolymerElements/paper-item#latest",
-    "paper-material": "PolymerElements/paper-material#latest",
-    "paper-menu": "PolymerElements/paper-menu#latest",
-    "paper-styles": "PolymerElements/paper-styles#latest",
-    "paper-toggle-button": "PolymerElements/paper-toggle-button#latest",
-    "paper-toolbar": "PolymerElements/paper-toolbar#latest",
-    "paper-dialog": "PolymerElements/paper-dialog#latest",
-    "neon-animation": "PolymerElements/neon-animation#latest",
-    "firebase-element": "GoogleWebComponents/firebase-element#latest",
-    "paper-datatable": "latest"
+    "polymer": "Polymer/polymer#master",
+    "carbon-route": "PolymerElements/carbon-route#master",
+    "iron-ajax": "PolymerElements/iron-ajax#master",
+    "iron-icons": "PolymerElements/iron-icons#master",
+    "iron-selector": "PolymerElements/iron-selector#master",
+    "neon-animation": "PolymerElements/neon-animation#master",
+    "paper-material": "PolymerElements/paper-material#master",
+    "paper-styles": "PolymerElements/paper-styles#master",
+    "paper-toast": "PolymerElements/paper-toast#master",
+    "paper-button": "PolymerElements/paper-button#master",
+    "paper-dialog": "PolymerElements/paper-dialog#master",
+    "paper-drawer-panel": "PolymerElements/paper-drawer-panel#master",
+    "paper-header-panel": "PolymerElements/paper-header-panel#master",
+    "paper-toolbar": "PolymerElements/paper-toolbar#master",
+    "paper-item": "PolymerElements/paper-item#master",
+    "paper-menu": "PolymerElements/paper-menu#master",
+    "firebase-element": "GoogleWebComponents/firebase-element#master",
+    "paper-datatable": "David-Mulder/paper-datatable#master"
   }
 }

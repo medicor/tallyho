@@ -1,6 +1,6 @@
 {
   "firebase": "tallyho",
-  "public": "public",
+  "public": ".",
   "ignore": [
     "firebase.json",
     "**/.*",
