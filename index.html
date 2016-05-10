@@ -2,16 +2,14 @@
 <html>
 
 <head>
-	<title>Tallyho</title>
+	<title>Tallyho!</title>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
 	<meta name="theme-color" content="#6a1b9a">
 	<meta name="mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="application-name" content="TallyHo">
-	<meta name="msapplication-TileColor" content="#ffffff">
-	<meta name="msapplication-TileImage" content="images/ms-icon-144x144.png">
+	<meta name="application-name" content="Tallyho!">
 	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto+Slab" />
 	<link rel="apple-touch-icon" sizes="57x57" href="images/apple-icon-57x57.png">
 	<link rel="apple-touch-icon" sizes="60x60" href="images/apple-icon-60x60.png">
@@ -26,8 +24,9 @@
 	<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
 	<link rel="icon" type="image/png" sizes="96x96" href="images/favicon-96x96.png">
 	<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
-	<link rel="manifest" href="manifest.json">
+	<link rel="manifest" href="/manifest.json">
 	<script>
+		/*global ga*/
 		(function(i, s, o, g, r, a, m) {
 			i['GoogleAnalyticsObject'] = r;
 			i[r] = i[r] || function() {
@@ -48,109 +47,57 @@
 	<!--		lazyRegister: true-->
 	<!--	};-->
 	<!--</script>-->
-	<script src="../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
-	<link rel="import" href="../bower_components/paper-toast/paper-toast.html">
-	<link rel="import" href="../bower_components/paper-button/paper-button.html">
-	<link rel="import" href="../bower_components/firebase-element/firebase-auth.html">
-	<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
-	<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
-	<link rel="import" href="../bower_components/mdi.html">
+	<script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+	<link rel="import" href="bower_components/carbon-route/carbon-route.html">
+	<link rel="import" href="bower_components/firebase-element/firebase-auth.html">
+	<link rel="import" href="elements/signin-page.html">
+	<link rel="import" href="elements/tracks-page.html">
 
 	<style is="custom-style" include="iron-flex iron-flex-alignment">
-		:root {
-			--default-primary-color: #00796b;
-		}
-		
 		body {
 			color: #333;
 			background: #fafafa;
 			font: 16px 'Roboto Slab', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-			margin: 0 5vh 10vh 5vh;
+			margin: 5vh 5vw;
 			height: 90vh;
-		}
-		
-		h1 {
-			color: #6a1b9a;
-			font-size: 4em;
-			margin: 0;
-		}
-		
-		a {
-			color: #6a1b9a;
-			text-decoration: none;
-		}
-		
-		a:hover {
-			text-decoration: underline;
-		}
-		
-		paper-button {
-			width: 260px;
-			margin: 0 0 20px 0;
-			display: flex;
-		}
-		
-		paper-button > iron-icon {
-			margin: 0px 5px 3px 0px;
-		}
-		
-		#tallyho-logo {
-			width: 218px;
-			/* TODO: add animation */
+			@apply(--layout-vertical);
+			@apply(--layout-center-justified);
 		}
 	</style>
 </head>
 
-<body unresolved class="layout vertical center-justified">
-	<template is="dom-bind" id="tallyho">
-		<firebase-auth redirect user={{!user}} location="https://tallyho.firebaseio.com" provider="github" on-error="onFirebaseError" on-login="onFirebaseLogin"></firebase-auth>
-		<paper-toast id="toaster"></paper-toast>
-		<section class="layout vertical center">
-			<img id="tallyho-logo" src="images/tallyho-logo.png">
-			<h1>Tallyho!</h1>
-			<h3>Time-tracking and invoicing</h3>
-			<div hidden$="{{!user}}">
-				<paper-button raised id="login-by-google" on-tap="login">
-					<iron-icon icon="mdi:google"></iron-icon>Sign in with Google
-				</paper-button>
-				<paper-button raised id="login-by-github" on-tap="login">
-					<iron-icon icon="mdi:github-circle"></iron-icon>Sign in with GitHub
-				</paper-button>
-			</div>
-		</section>
+<body unresolved>
+	<template id="tallyho" is="dom-bind">
+		<carbon-location route="{{route}}"></carbon-location>
+		<carbon-route route="{{route}}" pattern="/:page" data="{{data}}"></carbon-route>
+		<firebase-auth redirect user="{{user}}" location="https://tallyho.firebaseio.com" on-login="onLogin" on-error="onError"></firebase-auth>
+		<template is="dom-if" if="{{!user}}">
+			<signin-page firebase="{{firebase}}"></signin-page>
+		</template>
+		<template is="dom-if" if="{{user}}">
+			<tracks-page firebase="{{firebase}}"></tracks-page>
+		</template>
 	</template>
-
 	<script>
+		var tallyho = document.querySelector('#tallyho');
 		window.addEventListener('WebComponentsReady', function() {
-			var tallyho = document.querySelector('#tallyho');
-			var toaster = document.querySelector('#toaster');
-
-			tallyho.login = function() {
-				var fb = document.querySelector('firebase-auth');
-				toaster.text = "Logging in ...";
-				toaster.opened = true;
-				fb.login();
+			tallyho.firebase = document.querySelector('firebase-auth');
+			tallyho.onError = function() {
+				console.log('Firebase error occured');
 			};
-
-			tallyho.onFirebaseLogin = function() {
-				console.log(this.user);
-				toaster.text = "Redirecting ...";
-				toaster.opened = true;
-				//location.replace("elements/new-element.html");
-			};
-			tallyho.onFirebaseError = function() {
-				toaster.text = "Something went wrong. Please try again.";
-				toaster.opened = true;
+			tallyho.onLogin = function() {
+				//console.log('Logged in', tallyho.firebase.user);
 			};
 		});
 	</script>
-
 </body>
 
 </html>
 
 <!--
 TODO:s
+
+o  Use Polygit (see https://polygit.org/)
 o  Use <carbon-router> (see https://www.polymer-project.org/1.0/articles/routing.html) for routing.
 o  Use <paper-datatable> (see https://github.com/David-Mulder/paper-datatable).
 o  Use <paper-typeahead-input> (see https://github.com/cheonhyangzhang/paper-typeahead-input).
