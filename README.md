@@ -6,4 +6,4 @@ was during subsequent years replaced with Backbone, Ember, AngularJS and React.
 
 The backend is not in this project but when I have some time over I will make a simple mock-up to be used instead. 
 
-There is a [live demo](cloud.medicor.se/tallyho-extjs/default.htm) on my SBC server :smirk:.
+There is a [live demo](http://cloud.medicor.se/tallyho-extjs/default.htm) on my SBC server :smirk:.
