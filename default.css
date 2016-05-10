@@ -1,0 +1,29 @@
+/*
+ * Copyright(c) 2010 Medicor AB
+ */
+ 
+html *					{ font-family: "Segoe UI","Lucida Grande",Arial,sans-serif /*"Georgia", "Times", "Serif"*/; font-size: 12px; }
+input:focus				{ outline: 1px solid #FE9; }
+ 
+.Workspace				{ background: #F7EFEB url(images/LogoApplication.png) no-repeat bottom right; }
+.VersionStamp			{ color: #FFF; padding: 5px 10px; position: absolute; bottom: 10px; right: 10px; border-radius: 10px; }
+.VersionStamp a			{ color: #FFF; text-decoration: none; }
+
+.IconTool				{ background-image: url(images/IconTool.png) !important; }
+
+.IconRecords			{ background-image: url(images/IconRecords.png) !important; }
+.IconRecordsBrowse		{ background-image: url(images/IconRecordsBrowse.png) !important; }
+.IconRecordsInsert		{ background-image: url(images/IconRecordsInsert.png) !important; }
+.IconRecordsDelete		{ background-image: url(images/IconRecordsDelete.png) !important; }
+
+.IconProjects			{ background-image: url(images/IconProjects.png) !important; }
+.IconProjectsBrowse		{ background-image: url(images/IconProjectsBrowse.png) !important; }
+.IconProjectsInsert		{ background-image: url(images/IconProjectsInsert.png) !important; }
+.IconProjectsDelete		{ background-image: url(images/IconProjectsDelete.png) !important; }
+
+.IconCustomers			{ background-image: url(images/IconCustomers.png) !important; }
+.IconCustomersBrowse	{ background-image: url(images/IconCustomersBrowse.png) !important; }
+.IconCustomersInsert	{ background-image: url(images/IconCustomersInsert.png) !important; }
+.IconCustomersDelete	{ background-image: url(images/IconCustomersDelete.png) !important; }
+
+.x-grid3-row-selected	{ background-color: #FE9 !important; border-color: #F90; }

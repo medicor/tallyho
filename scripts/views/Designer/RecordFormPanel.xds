@@ -1,0 +1,137 @@
+{
+    "name": "RecordFormPanel.xds",
+    "projectId": "886DE6E4-3E2F-40D3-84D5-383F5732BEFA",
+    "settings": {
+        "urlPrefix": "http://localhost/",
+        "directAPI": "",
+        "spacesToIndent": "tab",
+        "codeGenFormat": "Class",
+        "extPath": "http://extjs.cachefly.net/ext-3.2.0/",
+        "exportPath": ".",
+        "lineEnding": "CRLF",
+        "instantiateStore": true,
+        "exportXDSFiles": true,
+        "genTimestamps": true
+    },
+    "xdsVersion": "1.1.2",
+    "components": [
+        {
+            "id": "MyForm",
+            "cid": "form",
+            "jsClass": "MyForm",
+            "snapToGrid": 10,
+            "userConfig": {
+                "layout": "absolute",
+                "width": 310,
+                "height": 220,
+                "autoScroll": false,
+                "title": "-ext-undefined-"
+            },
+            "cn": [
+                {
+                    "id": "MyLabel",
+                    "cid": "label",
+                    "jsClass": "MyLabel",
+                    "snapToGrid": 10,
+                    "userConfig": {
+                        "x": 20,
+                        "y": 20,
+                        "text": "Datum utfört:"
+                    }
+                },
+                {
+                    "id": "MyDateField",
+                    "cid": "datefield",
+                    "jsClass": "MyField",
+                    "snapToGrid": 10,
+                    "userConfig": {
+                        "x": 20,
+                        "y": 40,
+                        "altFormats": "ymd|Ymd|Y-m-d",
+                        "showToday": true,
+                        "name": "PerformedAt"
+                    }
+                },
+                {
+                    "id": "MyLabel1",
+                    "cid": "label",
+                    "jsClass": "MyLabel2",
+                    "snapToGrid": 10,
+                    "userConfig": {
+                        "x": 20,
+                        "y": 80,
+                        "text": "Tid i timmar:"
+                    }
+                },
+                {
+                    "id": "MyNumberField",
+                    "cid": "numberfield",
+                    "jsClass": "MyField1",
+                    "snapToGrid": 10,
+                    "userConfig": {
+                        "x": 100,
+                        "y": 80,
+                        "width": 50,
+                        "name": "HoursWorked",
+                        "decimalSeparator": ",",
+                        "decimalPrecision": 1,
+                        "maxValue": 9999,
+                        "minValue": 0.5,
+                        "allowDecimals": true
+                    }
+                },
+                {
+                    "id": "MyLabel2",
+                    "cid": "label",
+                    "jsClass": "MyLabel3",
+                    "snapToGrid": 10,
+                    "userConfig": {
+                        "x": 20,
+                        "y": 110,
+                        "text": "Aktuell taxa:"
+                    }
+                },
+                {
+                    "id": "MyNumberField1",
+                    "cid": "numberfield",
+                    "jsClass": "MyField3",
+                    "snapToGrid": 10,
+                    "userConfig": {
+                        "x": 100,
+                        "y": 110,
+                        "width": 50,
+                        "name": "CurrentRate",
+                        "maxValue": 10000,
+                        "maxText": "10 000 kr per timmai taxa �r den h�gsta till�tna taxan.",
+                        "minValue": 100,
+                        "minText": "100 kr per timma �r den l�gsta till�tna taxan."
+                    }
+                },
+                {
+                    "id": "MyLabel3",
+                    "cid": "label",
+                    "jsClass": "MyLabel1",
+                    "snapToGrid": 10,
+                    "userConfig": {
+                        "x": 20,
+                        "y": 150,
+                        "text": "Notering:"
+                    }
+                },
+                {
+                    "id": "MyTextField",
+                    "cid": "textfield",
+                    "jsClass": "MyField3",
+                    "snapToGrid": 10,
+                    "userConfig": {
+                        "x": 20,
+                        "y": 170,
+                        "name": "Notation",
+                        "width": 270
+                    }
+                }
+            ]
+        }
+    ],
+    "stores": []
+}
