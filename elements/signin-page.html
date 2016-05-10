@@ -1,0 +1,73 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../bower_components/paper-toast/paper-toast.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../bower_components/mdi.html">
+
+<dom-module id="signin-page">
+	<style>
+		h1 {
+			color: #6a1b9a;
+			font-size: 4em;
+			margin: 0;
+		}
+		
+		a {
+			color: #6a1b9a;
+			text-decoration: none;
+		}
+		
+		a:hover {
+			text-decoration: underline;
+		}
+		
+		section {
+			text-align: center;
+			padding-bottom: 10vh;
+		}
+		
+		paper-button {
+			margin: 5px;
+			background-color: white;
+		}
+		
+		paper-button > iron-icon {
+			margin: 0px 5px 3px 0px;
+		}
+	</style>
+	<template>
+		<paper-toast id="toaster"></paper-toast>
+		<section>
+			<img id="tallyho-logo" src="../images/tallyho-logo.png">
+			<h1>Tallyho!</h1>
+			<h3>Time tracking and invoicing</h3>
+			<paper-button raised id="signin-with-google" on-tap="signIn">
+				<iron-icon icon="mdi:google"></iron-icon>Sign in with Google
+			</paper-button>
+			<paper-button raised id="signin-with-github" on-tap="signIn">
+				<iron-icon icon="mdi:github-circle"></iron-icon>Sign in with GitHub
+			</paper-button>
+		</section>
+	</template>
+	<script>
+		/*global Polymer */
+		Polymer({
+			is: 'signin-page',
+
+			properties: {
+				firebase: {
+					type: Object,
+					notify: true
+				}
+			},
+			signIn: function(anEvent) {
+				this.$.toaster.text = "Signing in ..."
+				this.$.toaster.opened = true
+				this.firebase.provider = anEvent.currentTarget.id.split('-').pop(); // Last segment of button id is name of provider.
+				this.firebase.login();
+			}
+		});
+	</script>
+</dom-module>
