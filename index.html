@@ -81,10 +81,10 @@
 			<signin-page firebase="{{firebase}}"></signin-page>
 		</template>
 		<template is="dom-if" if="{{user}}">
-			<template is="dom-if" restamp if="{{isOnRoute('registrations')}}">
+			<template is="dom-if" restamp if="{{isOnRoute('tracks')}}">
 				<tracks-page firebase="{{firebase}}"></tracks-page>
 			</template>
-			<template is="dom-if" restamp if="{{isOnRoute('administration')}}">
+			<template is="dom-if" restamp if="{{isOnRoute('manage')}}">
 				<section>
 					<h1>This is the administration page</h1>
 					<p>You are [[user.uid]]</p>
@@ -110,7 +110,7 @@
 				//console.log('Logged in', tallyho.firebase.user);
 			};
 			if (tallyho.route.path === '/') {
-				tallyho.set('route.path', '/registrations');
+				tallyho.set('route.path', '/tracks');
 			}
 		});
 		/* printf for JavaScript (since Template strings are not widely supported). */

@@ -1,4 +1,4 @@
-TallyHo
+Tallyho!
 =======
 
-Time management in Polymer and Firebase
+Time tracking and invoicing with Polymer and Firebase.
