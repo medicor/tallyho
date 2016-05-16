@@ -11,19 +11,19 @@
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="application-name" content="Tallyho!">
 	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto+Slab" />
-	<link rel="apple-touch-icon" sizes="57x57" href="images/apple-icon-57x57.png">
-	<link rel="apple-touch-icon" sizes="60x60" href="images/apple-icon-60x60.png">
-	<link rel="apple-touch-icon" sizes="72x72" href="images/apple-icon-72x72.png">
-	<link rel="apple-touch-icon" sizes="76x76" href="images/apple-icon-76x76.png">
-	<link rel="apple-touch-icon" sizes="114x114" href="images/apple-icon-114x114.png">
-	<link rel="apple-touch-icon" sizes="120x120" href="images/apple-icon-120x120.png">
-	<link rel="apple-touch-icon" sizes="144x144" href="images/apple-icon-144x144.png">
-	<link rel="apple-touch-icon" sizes="152x152" href="images/apple-icon-152x152.png">
-	<link rel="apple-touch-icon" sizes="180x180" href="images/apple-icon-180x180.png">
-	<link rel="icon" type="image/png" sizes="192x192" href="images/android-icon-192x192.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="96x96" href="images/favicon-96x96.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+	<link rel="apple-touch-icon" sizes="57x57" href="/images/apple-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="/images/apple-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="/images/apple-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="/images/apple-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="/images/apple-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="/images/apple-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="/images/apple-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="/images/apple-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-icon-180x180.png">
+	<link rel="icon" type="image/png" sizes="192x192" href="/images/android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
 	<link rel="manifest" href="/manifest.json">
 	<script>
 		/*global ga*/
@@ -47,11 +47,12 @@
 	<!--		lazyRegister: true-->
 	<!--	};-->
 	<!--</script>-->
-	<script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
-	<link rel="import" href="bower_components/carbon-route/carbon-route.html">
-	<link rel="import" href="bower_components/firebase-element/firebase-auth.html">
-	<link rel="import" href="elements/signin-page.html">
-	<link rel="import" href="elements/tracks-page.html">
+	<script src="/bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+	<link rel="import" href="/bower_components/carbon-route/carbon-location.html">
+	<link rel="import" href="/bower_components/carbon-route/carbon-route.html">
+	<link rel="import" href="/bower_components/firebase-element/firebase-auth.html">
+	<link rel="import" href="/elements/signin-page.html">
+	<link rel="import" href="/elements/tracks-page.html">
 
 	<style is="custom-style" include="iron-flex iron-flex-alignment">
 		body {
@@ -63,32 +64,65 @@
 			@apply(--layout-vertical);
 			@apply(--layout-center-justified);
 		}
+		
+		section {
+			text-align: center;
+			padding-bottom: 10vh;
+		}
 	</style>
 </head>
 
 <body unresolved>
 	<template id="tallyho" is="dom-bind">
 		<carbon-location route="{{route}}"></carbon-location>
-		<carbon-route route="{{route}}" pattern="/:page" data="{{data}}"></carbon-route>
+		<carbon-route route="{{route}}" pattern="/:page" data="{{locator}}"></carbon-route>
 		<firebase-auth redirect user="{{user}}" location="https://tallyho.firebaseio.com" on-login="onLogin" on-error="onError"></firebase-auth>
-		<template is="dom-if" if="{{!user}}">
+		<template is="dom-if" restamp if="{{!user}}">
 			<signin-page firebase="{{firebase}}"></signin-page>
 		</template>
 		<template is="dom-if" if="{{user}}">
-			<tracks-page firebase="{{firebase}}"></tracks-page>
+			<template is="dom-if" restamp if="{{isOnRoute('registrations')}}">
+				<tracks-page firebase="{{firebase}}"></tracks-page>
+			</template>
+			<template is="dom-if" restamp if="{{isOnRoute('administration')}}">
+				<section>
+					<h1>This is the administration page</h1>
+					<p>You are [[user.uid]]</p>
+					<button on-tap="signOut">Sign out</button>
+				</section>
+			</template>
 		</template>
 	</template>
 	<script>
 		var tallyho = document.querySelector('#tallyho');
 		window.addEventListener('WebComponentsReady', function() {
 			tallyho.firebase = document.querySelector('firebase-auth');
+			tallyho.isOnRoute = function(aRoute) {
+				return tallyho.locator.page === aRoute;
+			};
+			tallyho.signOut = function() {
+				tallyho.firebase.logout();
+			},
 			tallyho.onError = function() {
 				console.log('Firebase error occured');
 			};
 			tallyho.onLogin = function() {
 				//console.log('Logged in', tallyho.firebase.user);
 			};
+			if (tallyho.route.path === '/') {
+				tallyho.set('route.path', '/registrations');
+			}
 		});
+		/* printf for JavaScript (since Template strings are not widely supported). */
+		/* See http://stackoverflow.com/questions/610406/javascript-equivalent-to-printf-string-format */
+		if (!String.prototype.format) {
+			String.prototype.format = function() {
+				var args = arguments;
+				return this.replace(/{(\d+)}/g, function(match, number) {
+					return typeof args[number] != 'undefined' ? args[number] : match;
+				});
+			};
+		}
 	</script>
 </body>
 
@@ -98,7 +132,6 @@
 TODO:s
 
 o  Use Polygit (see https://polygit.org/)
-o  Use <carbon-router> (see https://www.polymer-project.org/1.0/articles/routing.html) for routing.
 o  Use <paper-datatable> (see https://github.com/David-Mulder/paper-datatable).
 o  Use <paper-typeahead-input> (see https://github.com/cheonhyangzhang/paper-typeahead-input).
 o  Use Gravatar's identicon as project icons (see http://www.gravatar.com/avatar/1?d=identicon).
