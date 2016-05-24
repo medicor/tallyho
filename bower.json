@@ -15,7 +15,7 @@
   ],
   "dependencies": {
     "polymer": "Polymer/polymer#master",
-    "carbon-route": "PolymerElements/carbon-route#master",
+    "app-route": "PolymerElements/app-route#master",
     "iron-ajax": "PolymerElements/iron-ajax#master",
     "iron-icons": "PolymerElements/iron-icons#master",
     "iron-selector": "PolymerElements/iron-selector#master",

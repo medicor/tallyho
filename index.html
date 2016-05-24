@@ -48,8 +48,8 @@
 	<!--	};-->
 	<!--</script>-->
 	<script src="/bower_components/webcomponentsjs/webcomponents-lite.js"></script>
-	<link rel="import" href="/bower_components/carbon-route/carbon-location.html">
-	<link rel="import" href="/bower_components/carbon-route/carbon-route.html">
+	<link rel="import" href="/bower_components/app-route/app-location.html">
+	<link rel="import" href="/bower_components/app-route/app-route.html">
 	<link rel="import" href="/bower_components/firebase-element/firebase-auth.html">
 	<link rel="import" href="/elements/signin-page.html">
 	<link rel="import" href="/elements/tracks-page.html">
@@ -74,17 +74,17 @@
 
 <body unresolved>
 	<template id="tallyho" is="dom-bind">
-		<carbon-location route="{{route}}"></carbon-location>
-		<carbon-route route="{{route}}" pattern="/:page" data="{{locator}}"></carbon-route>
-		<firebase-auth redirect user="{{user}}" location="https://tallyho.firebaseio.com" on-login="onLogin" on-error="onError"></firebase-auth>
-		<template is="dom-if" restamp if="{{!user}}">
+		<app-location route="{{route}}"></app-location>
+		<app-route route="{{route}}" pattern="/:page" data="{{locator}}"></app-route>
+		<firebase-auth redirect user="{{user}}" location="https://tallyho.firebaseio.com/" on-login="onLogin" on-error="onError"></firebase-auth>
+		<template restamp is="dom-if" if="{{!user}}">
 			<signin-page firebase="{{firebase}}"></signin-page>
 		</template>
-		<template is="dom-if" if="{{user}}">
-			<template is="dom-if" restamp if="{{isOnRoute('tracks')}}">
+		<template restamp is="dom-if" if="{{user}}">
+			<template restamp is="dom-if" if="{{isOnRoute('tracks')}}">
 				<tracks-page firebase="{{firebase}}"></tracks-page>
 			</template>
-			<template is="dom-if" restamp if="{{isOnRoute('manage')}}">
+			<template restamp is="dom-if" restamp if="{{isOnRoute('manage')}}">
 				<section>
 					<h1>This is the administration page</h1>
 					<p>You are [[user.uid]]</p>
@@ -130,6 +130,21 @@
 
 <!--
 TODO:s
+o Make animations on front page :-)
+o Use <iron-lazy-pages> (see https://github.com/TimvdLippe/iron-lazy-pages)?
+
+<carbon-location route="{{route}}"></carbon-location>
+<carbon-route route="{{route}}" pattern="/:page" data="{{routeData}}"></carbon-route>
+<iron-lazy-pages selected="{{routeData.page}}" attr-for-selected="data-route">
+  <template is="iron-lazy-page" data-route="">
+    Home
+     <a href="/store">Visit the store.</a>
+  </template>
+  <template is="iron-lazy-page" data-route="store" path="store-page/store-page.html">
+    This is the store page.
+     <a href="/">Head back home.</a>
+  </template>
+</iron-lazy-pages>
 
 o  Use Polygit (see https://polygit.org/)
 o  Use <paper-datatable> (see https://github.com/David-Mulder/paper-datatable).
