@@ -11,19 +11,19 @@
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="application-name" content="Tallyho!">
 	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto+Slab" />
-	<link rel="apple-touch-icon" sizes="57x57" href="/images/apple-icon-57x57.png">
-	<link rel="apple-touch-icon" sizes="60x60" href="/images/apple-icon-60x60.png">
-	<link rel="apple-touch-icon" sizes="72x72" href="/images/apple-icon-72x72.png">
-	<link rel="apple-touch-icon" sizes="76x76" href="/images/apple-icon-76x76.png">
-	<link rel="apple-touch-icon" sizes="114x114" href="/images/apple-icon-114x114.png">
-	<link rel="apple-touch-icon" sizes="120x120" href="/images/apple-icon-120x120.png">
-	<link rel="apple-touch-icon" sizes="144x144" href="/images/apple-icon-144x144.png">
-	<link rel="apple-touch-icon" sizes="152x152" href="/images/apple-icon-152x152.png">
-	<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-icon-180x180.png">
-	<link rel="icon" type="image/png" sizes="192x192" href="/images/android-icon-192x192.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+	<link rel="apple-touch-icon" sizes="57x57" href="images/apple-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="images/apple-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="images/apple-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="images/apple-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="images/apple-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="images/apple-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="images/apple-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="images/apple-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="images/apple-icon-180x180.png">
+	<link rel="icon" type="image/png" sizes="192x192" href="images/android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="images/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
 	<link rel="manifest" href="/manifest.json">
 	<script>
 		/*global ga*/
@@ -38,29 +38,39 @@
 			a.src = g;
 			m.parentNode.insertBefore(a, m);
 		})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-		ga('create', 'UA-19223409-3', 'auto');
+		ga('create', 'UA-19223409-5', 'auto');
 		ga('send', 'pageview');
 	</script>
-	<!--<script>-->
-	<!--	window.Polymer = {-->
-	<!--		dom: 'shadow',-->
-	<!--		lazyRegister: true-->
-	<!--	};-->
-	<!--</script>-->
-	<script src="/bower_components/webcomponentsjs/webcomponents-lite.js"></script>
-	<link rel="import" href="/bower_components/app-route/app-location.html">
-	<link rel="import" href="/bower_components/app-route/app-route.html">
-	<link rel="import" href="/bower_components/firebase-element/firebase-auth.html">
-	<link rel="import" href="/elements/signin-page.html">
-	<link rel="import" href="/elements/tracks-page.html">
+	<script>
+		window.Polymer = {
+			dom: 'shadow',
+			lazyRegister: true
+		};
+	</script>
+	<script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+	<link rel="import" href="bower_components/paper-styles/typography.html">
+	<link rel="import" href="bower_components/app-route/app-location.html">
+	<link rel="import" href="bower_components/app-route/app-route.html">
+	<link rel="import" href="bower_components/firebase-element/firebase-auth.html">
+	<link rel="import" href="elements/signin-page.html">
+	<link rel="import" href="elements/tracks-page.html">
 
 	<style is="custom-style" include="iron-flex iron-flex-alignment">
+		:root {
+			--primary-color: var(--paper-purple-700);
+			--paper-font-common-base: {
+				font-family: 'Roboto Slab', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+				-webkit-font-smoothing: antialiased;
+			};
+		}
+		
 		body {
 			color: #333;
 			background: #fafafa;
-			font: 16px 'Roboto Slab', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 			margin: 5vh 5vw;
 			height: 90vh;
+			font-size: 16px;
+			@apply(--paper-font-common-base);
 			@apply(--layout-vertical);
 			@apply(--layout-center-justified);
 		}
@@ -84,7 +94,7 @@
 			<template restamp is="dom-if" if="{{isOnRoute('tracks')}}">
 				<tracks-page firebase="{{firebase}}"></tracks-page>
 			</template>
-			<template restamp is="dom-if" restamp if="{{isOnRoute('manage')}}">
+			<template restamp is="dom-if" if="{{isOnRoute('manage')}}">
 				<section>
 					<h1>This is the administration page</h1>
 					<p>You are [[user.uid]]</p>
@@ -95,24 +105,6 @@
 	</template>
 	<script>
 		var tallyho = document.querySelector('#tallyho');
-		window.addEventListener('WebComponentsReady', function() {
-			tallyho.firebase = document.querySelector('firebase-auth');
-			tallyho.isOnRoute = function(aRoute) {
-				return tallyho.locator.page === aRoute;
-			};
-			tallyho.signOut = function() {
-				tallyho.firebase.logout();
-			},
-			tallyho.onError = function() {
-				console.log('Firebase error occured');
-			};
-			tallyho.onLogin = function() {
-				//console.log('Logged in', tallyho.firebase.user);
-			};
-			if (tallyho.route.path === '/') {
-				tallyho.set('route.path', '/tracks');
-			}
-		});
 		/* printf for JavaScript (since Template strings are not widely supported). */
 		/* See http://stackoverflow.com/questions/610406/javascript-equivalent-to-printf-string-format */
 		if (!String.prototype.format) {
@@ -123,6 +115,24 @@
 				});
 			};
 		}
+		window.addEventListener('WebComponentsReady', function() {
+			tallyho.firebase = document.querySelector('firebase-auth');
+			tallyho.isOnRoute = function(aRoute) {
+				return tallyho.locator.page === aRoute;
+			};
+			tallyho.signOut = function() {
+				tallyho.firebase.logout();
+			};
+			tallyho.onError = function() {
+				//console.log('Firebase error occured');
+			};
+			tallyho.onLogin = function() {
+				//console.log('Logged in', tallyho.firebase.user);
+			};
+			if (tallyho.route.path === '/') {
+				tallyho.set('route.path', '/tracks');
+			}
+		});
 	</script>
 </body>
 

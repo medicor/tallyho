@@ -3,7 +3,7 @@
   "name": "Tallyho!",
   "display": "standalone",
   "start_url": "/index.html",
-  "theme_color": "#6a1b9a"
+  "theme_color": "#6a1b9a",
   "background_color": "#fafafa",
   "icons": [{
     "src": "images/android-icon-36x36.png",
