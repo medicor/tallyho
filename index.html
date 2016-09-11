@@ -41,19 +41,9 @@
 		ga('create', 'UA-19223409-5', 'auto');
 		ga('send', 'pageview');
 	</script>
-	<script>
-		window.Polymer = {
-			dom: 'shadow',
-			lazyRegister: true
-		};
-	</script>
-	<script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
-	<link rel="import" href="bower_components/paper-styles/typography.html">
-	<link rel="import" href="bower_components/app-route/app-location.html">
-	<link rel="import" href="bower_components/app-route/app-route.html">
-	<link rel="import" href="bower_components/firebase-element/firebase-auth.html">
-	<link rel="import" href="elements/signin-page.html">
-	<link rel="import" href="elements/tracks-page.html">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.indigo-pink.min.css">
+	<script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
 
 	<style is="custom-style" include="iron-flex iron-flex-alignment">
 		:root {
@@ -81,7 +71,6 @@
 		}
 	</style>
 </head>
-
 <body unresolved>
 	<template id="tallyho" is="dom-bind">
 		<app-location route="{{route}}"></app-location>
@@ -137,28 +126,3 @@
 </body>
 
 </html>
-
-<!--
-TODO:s
-o Make animations on front page :-)
-o Use <iron-lazy-pages> (see https://github.com/TimvdLippe/iron-lazy-pages)?
-
-<carbon-location route="{{route}}"></carbon-location>
-<carbon-route route="{{route}}" pattern="/:page" data="{{routeData}}"></carbon-route>
-<iron-lazy-pages selected="{{routeData.page}}" attr-for-selected="data-route">
-  <template is="iron-lazy-page" data-route="">
-    Home
-     <a href="/store">Visit the store.</a>
-  </template>
-  <template is="iron-lazy-page" data-route="store" path="store-page/store-page.html">
-    This is the store page.
-     <a href="/">Head back home.</a>
-  </template>
-</iron-lazy-pages>
-
-o  Use Polygit (see https://polygit.org/)
-o  Use <paper-datatable> (see https://github.com/David-Mulder/paper-datatable).
-o  Use <paper-typeahead-input> (see https://github.com/cheonhyangzhang/paper-typeahead-input).
-o  Use Gravatar's identicon as project icons (see http://www.gravatar.com/avatar/1?d=identicon).
-o  Localization - strings, dates and money. (see https://ebidel.github.io/i18n-msg/components/i18n-msg/).
--->

@@ -1,4 +1,4 @@
 Tallyho!
 =======
 
-Time tracking and invoicing with Polymer and Firebase.
+Time tracking and invoicing with Vue.js and Google MDL.
