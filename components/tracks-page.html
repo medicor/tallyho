@@ -1,0 +1,53 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="../bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="../bower_components/paper-toast/paper-toast.html">
+<link rel="import" href="../bower_components/paper-toolbar/paper-toolbar.html">
+<link rel="import" href="../bower_components/paper-drawer-panel/paper-drawer-panel.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/paper-item/paper-item.html">
+<link rel="import" href="../bower_components/paper-menu/paper-menu.html">
+<link rel="import" href="../bower_components/firebase-element/firebase-collection.html">
+<dom-module id="tracks-page">
+	<template>
+		<style>
+			paper-item {
+				padding: 10px;
+				cursor: pointer;
+			}
+		</style>
+		<paper-toast id="toaster"></paper-toast>
+		<paper-drawer-panel>
+			<div drawer id="drawer">
+				<paper-toolbar>
+					<p>Tallyho!</p>
+					<paper-button raised on-tap="signOut">
+						Sign out
+					</paper-button>
+				</paper-toolbar>
+				<paper-menu class="list">
+					<firebase-collection location="https://tallyho.firebaseio.com/{{firebase.user.uid}}/customers" data="{{customers}}"></firebase-collection>
+					<template is="dom-repeat" items="[[customers]]" as="customer">
+						<paper-item>
+							[[customer.__firebaseKey__]]<br>
+							[[customer.contactName]]
+						</paper-item>
+					</template>
+				</paper-menu>
+			</div>
+			<div main id="main">
+				<paper-icon-button id="menu-toggle" icon="menu" paper-drawer-toggle></paper-icon-button>
+			</div>
+		</paper-drawer-panel>
+	</template>
+	<script>
+		Polymer({
+			is: 'tracks-page',
+			signOut: function() {
+				this.$.toaster.text = "You have signed out.";
+				this.$.toaster.opened = true;
+				this.firebase.logout();
+			},
+		});
+	</script>
+</dom-module>

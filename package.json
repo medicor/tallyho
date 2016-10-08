@@ -1,0 +1,26 @@
+{
+  "name": "tallyho",
+  "version": "0.2.0",
+  "description": "Time-tracking and invoicing",
+  "author": "Roger Salomonsson",
+  "license": "MIT",
+  "homepage": "https://github.com/medicor/tallyho",
+  "main": "index.html",
+  "dependencies": {
+    "vue": "git://github.com/vuejs/vue#next",
+    "material-design-lite": "git://github.com/google/material-design-lite#mdl-1.x"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/medicor/tallyho.git"
+  },
+  "keywords": [
+    "time-tracking"
+  ],
+  "bugs": {
+    "url": "https://github.com/medicor/tallyho/issues"
+  }
+}
