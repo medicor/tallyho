@@ -84,6 +84,7 @@
 
 <body unresolved>
 	<template id="tallyho" is="dom-bind">
+		<!-- Use <lazy-pages> here! -->
 		<app-location route="{{route}}"></app-location>
 		<app-route route="{{route}}" pattern="/:page" data="{{locator}}"></app-route>
 		<firebase-auth redirect user="{{user}}" location="https://tallyho.firebaseio.com/" on-login="onLogin" on-error="onError"></firebase-auth>
