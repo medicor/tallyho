@@ -1,10 +1,75 @@
+/*
 html,
-body {
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+blockquote,
+h1 small,
+h2 small,
+h3 small,
+h4 small,
+h5 small,
+h6 small,
+.mdl-typography--display-4,
+.mdl-typography--display-4-color-contrast,
+.mdl-typography--display-3,
+.mdl-typography--display-3-color-contrast,
+.mdl-typography--display-2,
+.mdl-typography--display-2-color-contrast,
+.mdl-typography--display-1,
+.mdl-typography--display-1-color-contrast,
+.mdl-typography--headline,
+.mdl-typography--headline-color-contrast,
+.mdl-typography--headline-color-contrast,
+.mdl-typography--title,
+.mdl-typography--title-color-contrast,
+.mdl-typography--subhead,
+.mdl-typography--subhead-color-contrast,
+.mdl-typography--body-2-force-preferred-font,
+.mdl-typography--body-2-force-preferred-font-color-contrast,
+.mdl-typography--body-1-force-preferred-font,
+.mdl-typography--body-1-force-preferred-font-color-contrast,
+.mdl-typography--caption-force-preferred-font,
+.mdl-typography--caption-force-preferred-font-color-contrast,
+.mdl-typography--menu,
+.mdl-typography--menu-color-contrast,
+.mdl-typography--button,
+.mdl-typography--button-color-contrast,
+.mdl-badge[data-badge]:after,
+.mdl-button,
+.mdl-chip,
+.mdl-list__item,
+.mdl-layout__title,
+.mdl-layout-title,
+.mdl-snackbar,
+.mdl-snackbar__action {
   font-family: 'Roboto', 'Helvetica', sans-serif;
+}
+*/
+
+@media screen and (min-width: 1024px) {
+  body {
+    zoom: 125%
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .mdl-layout__header-row {
+    height: 56px;
+    padding: 0 0 0 56px;
+  }
 }
 
 .tallyho-avatar {
   width: 48px;
   height: 48px;
   border-radius: 24px;
+}
+
+.mdl-navigation__link> .material-icons {
+  padding-right: 6px;
 }

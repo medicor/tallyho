@@ -13,7 +13,6 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="apple-mobile-web-app-title" content="TallyHo!">
   <meta name="application-name" content="Tallyho!">
-  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto+Slab" />
   <link rel="apple-touch-icon" sizes="57x57" href="images/apple-icon-57x57.png">
   <link rel="apple-touch-icon" sizes="60x60" href="images/apple-icon-60x60.png">
   <link rel="apple-touch-icon" sizes="72x72" href="images/apple-icon-72x72.png">
@@ -29,9 +28,9 @@
   <link rel="icon" type="image/png" sizes="96x96" href="images/favicon-96x96.png">
   <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
   <link rel="manifest" href="/manifest.json">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.deep_purple-deep_orange.min.css">
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="//code.getmdl.io/1.2.1/material.deep_purple-deep_orange.min.css">
   <link rel="stylesheet" href="styles.css">
   <script>
     /*global ga*/
@@ -41,7 +40,7 @@
         (i[r].q = i[r].q || []).push(arguments);
       }, i[r].l = 1 * new Date();
       a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0];
+      m = s.getElementsByTagName(o)[0];
       a.async = 1;
       a.src = g;
       m.parentNode.insertBefore(a, m);
@@ -52,26 +51,28 @@
 </head>
 
 <body>
-  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
+  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-drawer">
     <header class="mdl-layout__header">
       <div class="mdl-layout__header-row">
-        <span class="mdl-layout-title">Home</span>
+        <span class="mdl-layout-title">Tallyho!</span>
         <div class="mdl-layout-spacer"></div>
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
           <label class="mdl-button mdl-js-button mdl-button--icon" for="search">
-              <i class="material-icons">search</i>
-            </label>
+            <i class="material-icons">search</i>
+          </label>
           <div class="mdl-textfield__expandable-holder">
             <input class="mdl-textfield__input" type="text" id="search">
             <label class="mdl-textfield__label" for="search">Enter your query...</label>
           </div>
         </div>
         <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="hdrbtn">
-            <i class="material-icons">more_vert</i>
-          </button>
+          <i class="material-icons">more_vert</i>
+        </button>
         <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="hdrbtn">
-          <li class="mdl-menu__item">About</li>
+          <li class="mdl-menu__item">Administer</li>
+          <li disabled class="mdl-menu__item mdl-menu__item--full-bleed-divider">Register</li>
           <li class="mdl-menu__item">Logout</li>
+          <li class="mdl-menu__item">About</li>
         </ul>
       </div>
     </header>
@@ -79,19 +80,16 @@
       <nav class="mdl-navigation">
         <a class="mdl-navigation__link" href=""><i class="material-icons" role="presentation">home</i>Home</a>
         <a class="mdl-navigation__link" href=""><i class="material-icons" role="presentation">inbox</i>Inbox</a>
-        <a class="mdl-navigation__link" href=""><i class="material-icons" role="presentation">delete</i>Trash</a>
+        <a class="mdl-navigation__link" href="https://ahlechandre.github.io/mdl-stepper/" target="_blank"><i class="material-icons" role="presentation">launch</i>MDL Stepper</a>
         <div class="mdl-layout-spacer"></div>
         <a class="mdl-navigation__link" href=""><i class="material-icons" role="presentation">help_outline</i><span class="visuallyhidden">Help</span></a>
       </nav>
     </div>
     <main class="mdl-layout__content">
       <div class="mdl-grid">
-        <div class="mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
-          <a href="https://ahlechandre.github.io/mdl-stepper/started/">Use MDL stepper?</a>
-        </div>
         <div class="mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--3-col-tablet mdl-cell--8-col-desktop">
           <div class="mdl-card__title">
-            <h1 class="mdl-card__title-text">Bio på söndag</h1>
+            <h2 class="mdl-card__title-text">Bio på söndag</h2>
           </div>
           <div class="mdl-card__supporting-text">
             <table class="mdl-data-table mdl-js-data-table">
@@ -133,8 +131,10 @@
           </div>
         </div>
         <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col">
+          <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">View options</h2>
+          </div>
           <div class="mdl-card__supporting-text">
-            <h3>View options</h3>
             <ul>
               <li>
                 <label for="chkbox1" class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
@@ -163,9 +163,7 @@
             </ul>
           </div>
           <div class="mdl-card__actions mdl-card--border">
-            <a href="#" class="mdl-button mdl-js-button mdl-js-ripple-effect">Change location</a>
-            <div class="mdl-layout-spacer"></div>
-            <i class="material-icons">location_on</i>
+            <a href="#" class="mdl-button mdl-js-button mdl-js-ripple-effect"><i class="material-icons">location_on</i>Change location</a>
           </div>
         </div>
       </div>
