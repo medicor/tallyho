@@ -1,0 +1,16 @@
+{
+	"d": [{
+		"WorkerID": 1000,
+		"Username": "roger",
+		"PassHash": "XFzW+KBBX4s=",
+		"FullName": "Roger Salomonsson",
+		"BusinessEmail": "roger@medicor.se",
+		"Company": {
+			"CompanyID": 2000,
+			"CompanyName": "Medicor AB",
+			"StreetAddress": "Ålegårdsgatan 240",
+			"PostalAddress": "431 50 Mölndal",
+			"Email": "roger@medicor.se"
+		}
+	}]
+}

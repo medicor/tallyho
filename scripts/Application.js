@@ -1,4 +1,4 @@
-﻿
+/* globals Ext createProjectGridWindow createCustomerGridWindow createRecordGridWindow */
 /// <reference Path="../ext-js/adapter/ext/ext-base.js"/>
 /// <reference path="../ext-js/ext-all.js"/>
 
@@ -34,7 +34,7 @@ Ext.onReady(function() {
 			*/
 			storeId: 'debitOverviewStore',
 			root: 'd',
-			idProperty: 'ProjectID',  
+			idProperty: 'ProjectID',
 			fields: [
 				{name: 'ProjectID',		type: 'int'},
 				{name: 'ProjectName',	type: 'string'},
@@ -69,8 +69,8 @@ Ext.onReady(function() {
 					resizable: false
 				},
 				columns: [
-					{id: 'ProjectName',	header: "Projekt",	dataIndex: 'ProjectName' }, 
-					{id: 'LastDebited',	header: "Senast",	dataIndex: 'LastDebited', width: 80, fixed: true, xtype: 'datecolumn', format: Date.patterns.ISO8601Short, tooltip: 'Datum när tid senast registrerades på projektet.'} 
+					{id: 'ProjectName',	header: "Projekt",	dataIndex: 'ProjectName' },
+					{id: 'LastDebited',	header: "Senast",	dataIndex: 'LastDebited', width: 80, fixed: true, xtype: 'datecolumn', format: Date.patterns.ISO8601Short, tooltip: 'Datum när tid senast registrerades på projektet.'}
 				]
 			}),
 			tbar: [{
@@ -109,18 +109,18 @@ Ext.onReady(function() {
 				}
 			}],
 			listeners: {
-				rowclick: function (aGridPanel, aRowNumber, anEvent) {
+				rowclick: function (aGridPanel) {
 					var c = aGridPanel.getTopToolbar();
 					c.findById('viewRecordsButton').enable();
 					c.findById('viewProjectButton').enable();
 					c.findById('viewCustomerButton').enable();
 				},
-				rowdblclick: function(aGridPanel, aRowNumber, anEvent) {
+				rowdblclick: function(aGridPanel) {
 					var c = aGridPanel.getTopToolbar();
 					c.findById('viewRecordsButton').handler();
 				}
 			}
-		})
+		});
 	};
 
 	var createInvoicePanel = function() {
@@ -128,7 +128,7 @@ Ext.onReady(function() {
 			title: 'Fakturor',
 	//		bodyCssClass: 'Workspace',
 			html: '<p>Funktioner för fakturering.</p>'
-		})
+		});
 	};
 
 	var createReportPanel = function() {
@@ -136,11 +136,11 @@ Ext.onReady(function() {
 			title: 'Rapporter',
 	//		bodyCssClass: 'Workspace',
 			html: '<p>Diverse rapporter.</p>'
-		})
-	}
+		});
+	};
 
 	var createToolsPanel = function() {
-		var myStamp = new Ext.Component ({	
+		var myStamp = new Ext.Component ({
 			tag: 'span',
 			cls: 'VersionStamp StyleFreeAnchor',
 			html: '<a href="http://www.sencha.com" target="_blank">built with ExtJS v' + Ext.version + '</a>'
@@ -149,10 +149,10 @@ Ext.onReady(function() {
 			title: 'Verktyg',
 			padding: 10,
 			listeners: {
-				beforeexpand: function (p) {
+				beforeexpand: function () {
 					myStamp.hide();
 				},
-				expand: function (p) {
+				expand: function () {
 					myStamp.show();
 					myStamp.el.animate({backgroundColor: { from: '#FF0000', to: '#FF9C00' }}, 1.0, null, 'easeIn', 'color');
 				}
@@ -183,8 +183,8 @@ Ext.onReady(function() {
 				},
 				myStamp
 			]
-		})
-	}
+		});
+	};
 
 	var createSidebarPanel = function() {
 		var myOverviewPanel = createDebitOverviewPanel();
@@ -203,29 +203,29 @@ Ext.onReady(function() {
 			split: true,
 			width: 320,
 			minWidth: 210,
-			layoutConfig: { 
-				animate: true 
+			layoutConfig: {
+				animate: true
 			},
 			items: [
-				myOverviewPanel, 
+				myOverviewPanel,
 				createInvoicePanel(),
 				createReportPanel(),
 				createToolsPanel()
 			],
 			listeners: {
-				beforeexpand: function (aPanel) {
+				beforeexpand: function () {
 					return isOverviewLoaded; // && (document.cookie.indexOf('TallyHoID') < 0);
 				}
 			},
 			load: function() {
 				var s = myOverviewPanel.getStore();
-				var m = new Ext.LoadMask (Ext.getBody(), {msg: "Laddar debiteringsöversikt...", store: s});
+				new Ext.LoadMask (Ext.getBody(), {msg: "Laddar debiteringsöversikt...", store: s});
 				s.on ("load", function() {isOverviewLoaded=true; this.expand();}, this);
 				s.load();
 			}
-		})
-	}
-		
+		});
+	};
+
 	var createContentPanel = function() {
 		return new Ext.Panel({
 			id: 'contentPanel',
@@ -233,9 +233,9 @@ Ext.onReady(function() {
 			region: 'center',
 			margins: '5 5 5 0',
 			bodyCssClass: 'Workspace'
-		})
-	}
-		
+		});
+	};
+
 	var createWorkerStore = function() {
 		return new Ext.data.JsonStore({
 			autoDestroy: true,
@@ -244,28 +244,30 @@ Ext.onReady(function() {
 	//		baseParam: {'$expand': 'Company'}, // Can be used to expand entities if the data service method returns IQueryable
 			storeId: 'workerStore',
 			root: 'd',
-			idProperty: 'WorkerID',  
+			idProperty: 'WorkerID',
 			fields: [
 				{name: 'WorkerID',		type: 'int'},
 				{name: 'Username',		type: 'string'},
 				{name: 'Fullname',		type: 'string'},
 				{name: 'BusinessEmail',	type: 'string'},
 				//Can the following be setup to be hierarchical instead?
-				{name: 'CompanyID',		type: 'int',	mapping: 'Company.CompanyID'}, 
-				{name: 'CompanyName',	type: 'string',	mapping: 'Company.CompanyName'}, 
-				{name: 'StreetAddress',	type: 'string',	mapping: 'Company.StreetAddress'}, 
+				{name: 'CompanyID',		type: 'int',	mapping: 'Company.CompanyID'},
+				{name: 'CompanyName',	type: 'string',	mapping: 'Company.CompanyName'},
+				{name: 'StreetAddress',	type: 'string',	mapping: 'Company.StreetAddress'},
 				{name: 'PostalAddress',	type: 'string',	mapping: 'Company.PostalAddress'}
 			],
 			listeners: {
-				exception: function (proxy, type, action, options, response) {
+				exception: function () {
 	//				Ext.Msg.alert('Exception in Worker Store', type, action);
 				}
 			}
-		})
+		});
 	};
 
 	//	Ext.get("login-form-box").boxWrap();
 	var createLoginPanel = function (aWorkerStore) {
+		var myPanel;
+		
 		return myPanel = new Ext.form.FormPanel ({
 			bodyStyle: 'padding: 20px',
 			labelAlign: 'top',
@@ -281,7 +283,7 @@ Ext.onReady(function() {
 				key: [10,13],
 				fn: function() {
 					// This should work out of the box ...
-					var b = myPanel.findById('myLoginButton')
+					var b = myPanel.findById('myLoginButton');
 					b.handler(b);
 				}
 			},
@@ -318,7 +320,7 @@ Ext.onReady(function() {
 				text: 'Logga in',
 				style: 'float: left',
 				width: 80,
-				handler: function (aButton, anEvent) {
+				handler: function (aButton) {
 					var thisForm = myPanel.getForm();
 					if (thisForm.isValid()) {
 						aButton.disable();
@@ -335,7 +337,7 @@ Ext.onReady(function() {
 						aWorkerStore.proxy.conn.url = 'DataService.svc/Authenticate2';
 						aWorkerStore.load({
 							callback: function(aWorker) {
-								if (aWorker.length == 0) { 
+								if (aWorker.length == 0) {
 									myPanel.findById('myIndicator').el.fadeOut({duration: 0.5, callback: function(t){t.remove();}});
 									myPanel.add(new Ext.Component ({id: 'myStatusRow', html: 'Ogiltigt användarnamn eller lösenord', style: 'clear: both; padding-top: 10px; color: red'}));
 									myPanel.doLayout();
@@ -350,12 +352,12 @@ Ext.onReady(function() {
 						});
 					/*
 						f.submit({
-							url:'DataService.svc/Authenticate', 
-							method: 'get', 
+							url:'DataService.svc/Authenticate',
+							method: 'get',
 							params: {
 								// All query string parameter values must be single-quoted. Only GET works. (MS anomalies)
 								aUsername: "'" + f.findField('myUsername').getRawValue() + "'",
-								aPassword: "'" + f.findField('myPassword').getRawValue() + "'", 
+								aPassword: "'" + f.findField('myPassword').getRawValue() + "'",
 								'$expand': 'Company'
 							},
 							failure: function (aForm, anAction) {
@@ -372,24 +374,24 @@ Ext.onReady(function() {
 				}
 	//		},{
 	//			xtype: 'component',
-	//			id: 'myLoadingIndicator', 
-	//			cls: 'loading-indicator', 
-	//			html: 'Loggar in ...', 
-	//			style: 'float: right'		
+	//			id: 'myLoadingIndicator',
+	//			cls: 'loading-indicator',
+	//			html: 'Loggar in ...',
+	//			style: 'float: right'
 			}]
-		})
+		});
 	};
 
 	// redirect to non-www to avoid multiple base addresses in DataService
-	if (location.href.search(/www\./i) >= 0) {
-		location.href = location.href.replace(/www\./i, '');
+	if (window.location.href.search(/www\./i) >= 0) {
+		window.location.href = window.location.href.replace(/www\./i, '');
 		return;
 	}
 
 	var sidebarPanel = createSidebarPanel();
 	var contentPanel = createContentPanel();
 
-	var mainViewport = new Ext.Viewport({
+	new Ext.Viewport({
 		layout: 'border',
 		items: [
 			sidebarPanel,
@@ -402,7 +404,7 @@ Ext.onReady(function() {
 	s.proxy.conn.method = 'GET';
 	s.load({
 		callback: function(aWorker) {
-			if (aWorker.length == 0) { 
+			if (aWorker.length == 0) {
 				var p = createLoginPanel(s);
 				contentPanel.add(p);
 				contentPanel.doLayout();
@@ -417,4 +419,3 @@ Ext.onReady(function() {
 		}
 	});
 });
-//WHY??

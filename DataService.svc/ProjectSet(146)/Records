@@ -1,0 +1,156 @@
+{
+	d: [{
+		"_id": "522b25e4d053b116789b64da",
+		"RecordID": 10176,
+		"ProjectID": 146,
+		"InvoiceID": 1372,
+		"PerformedAt": "2004-07-22T22:00:00.000Z",
+		"HoursWorked": 3,
+		"CurrentRate": 650,
+		"Notation": "Installation av .NET"
+	}, {
+		"_id": "522b25e4d053b116789b64e2",
+		"RecordID": 10184,
+		"ProjectID": 146,
+		"InvoiceID": 1372,
+		"PerformedAt": "2004-07-04T22:00:00.000Z",
+		"HoursWorked": 2,
+		"CurrentRate": 650,
+		"Notation": "Hängningsproblem"
+	}, {
+		"_id": "522b25e4d053b116789b64e6",
+		"RecordID": 10188,
+		"ProjectID": 146,
+		"InvoiceID": 1371,
+		"PerformedAt": "2004-06-22T22:00:00.000Z",
+		"HoursWorked": 10,
+		"CurrentRate": 650,
+		"Notation": "Översättning av årsrapport"
+	}, {
+		"_id": "522b25e4d053b116789b64e8",
+		"RecordID": 10190,
+		"ProjectID": 146,
+		"InvoiceID": 1371,
+		"PerformedAt": "2004-06-20T22:00:00.000Z",
+		"HoursWorked": 2,
+		"CurrentRate": 650,
+		"Notation": "Publicering av kliniksidor, ny Karlstad"
+	}, {
+		"_id": "522b25e4d053b116789b64ed",
+		"RecordID": 10195,
+		"ProjectID": 146,
+		"InvoiceID": 1371,
+		"PerformedAt": "2004-06-15T22:00:00.000Z",
+		"HoursWorked": 8,
+		"CurrentRate": 650,
+		"Notation": ".Net och HipFact"
+	}, {
+		"_id": "522b25e4d053b116789b64ee",
+		"RecordID": 10196,
+		"ProjectID": 146,
+		"InvoiceID": 1371,
+		"PerformedAt": "2004-06-14T22:00:00.000Z",
+		"HoursWorked": 4,
+		"CurrentRate": 650,
+		"Notation": "Ny PDF, luxationer, m.m."
+	}, {
+		"_id": "522b25e4d053b116789b64ef",
+		"RecordID": 10197,
+		"ProjectID": 146,
+		"InvoiceID": 1371,
+		"PerformedAt": "2004-06-13T22:00:00.000Z",
+		"HoursWorked": 2,
+		"CurrentRate": 650,
+		"Notation": "Ny bild till tryckeriet, möte Ramin"
+	}, {
+		"_id": "522b25e4d053b116789b64f5",
+		"RecordID": 10203,
+		"ProjectID": 146,
+		"InvoiceID": 1371,
+		"PerformedAt": "2004-06-03T22:00:00.000Z",
+		"HoursWorked": 2,
+		"CurrentRate": 650,
+		"Notation": "Diverse"
+	}, {
+		"_id": "522b25e4d053b116789b64fd",
+		"RecordID": 10211,
+		"ProjectID": 146,
+		"InvoiceID": 1370,
+		"PerformedAt": "2004-05-18T22:00:00.000Z",
+		"HoursWorked": 6,
+		"CurrentRate": 650,
+		"Notation": "Modern teknik med KM"
+	}, {
+		"_id": "522b25e4d053b116789b64fe",
+		"RecordID": 10212,
+		"ProjectID": 146,
+		"InvoiceID": 1370,
+		"PerformedAt": "2004-05-17T22:00:00.000Z",
+		"HoursWorked": 8,
+		"CurrentRate": 650,
+		"Notation": "Modern teknik med KM"
+	}, {
+		"_id": "522b25e4d053b116789b6529",
+		"RecordID": 10255,
+		"ProjectID": 146,
+		"InvoiceID": 1368,
+		"PerformedAt": "2004-03-21T23:00:00.000Z",
+		"HoursWorked": 4,
+		"CurrentRate": 650,
+		"Notation": "Rapporter med Visual C#"
+	}, {
+		"_id": "522b25e4d053b116789b652a",
+		"RecordID": 10256,
+		"ProjectID": 146,
+		"InvoiceID": 1368,
+		"PerformedAt": "2004-03-21T23:00:00.000Z",
+		"HoursWorked": 8,
+		"CurrentRate": 650,
+		"Notation": "Visual Studio .NET 2003"
+	}, {
+		"_id": "522b25e4d053b116789b653d",
+		"RecordID": 10275,
+		"ProjectID": 146,
+		"InvoiceID": 1367,
+		"PerformedAt": "2004-02-23T23:00:00.000Z",
+		"HoursWorked": 4,
+		"CurrentRate": 650,
+		"Notation": "Karins Java-problem"
+	}, {
+		"_id": "522b25e4d053b116789b6545",
+		"RecordID": 10283,
+		"ProjectID": 146,
+		"InvoiceID": 1367,
+		"PerformedAt": "2004-02-15T23:00:00.000Z",
+		"HoursWorked": 8,
+		"CurrentRate": 650,
+		"Notation": "Eislers data, Karins Java-problem, m.m."
+	}, {
+		"_id": "522b25e4d053b116789b6546",
+		"RecordID": 10284,
+		"ProjectID": 146,
+		"InvoiceID": 1367,
+		"PerformedAt": "2004-02-10T23:00:00.000Z",
+		"HoursWorked": 11,
+		"CurrentRate": 650,
+		"Notation": "Möte med SoS, m.m."
+	}, {
+		"_id": "522b25e4d053b116789b6547",
+		"RecordID": 10285,
+		"ProjectID": 146,
+		"InvoiceID": 1367,
+		"PerformedAt": "2004-02-08T23:00:00.000Z",
+		"HoursWorked": 5,
+		"CurrentRate": 650,
+		"Notation": "Problem med sökning, Suns Java VM"
+	}, {
+		"_id": "522b25e4d053b116789b6548",
+		"RecordID": 10286,
+		"ProjectID": 146,
+		"InvoiceID": 1367,
+		"PerformedAt": "2004-02-08T23:00:00.000Z",
+		"HoursWorked": 3,
+		"CurrentRate": 650,
+		"Notation": "Bortfallsdata, Huddinges resultat"
+	}]
+}

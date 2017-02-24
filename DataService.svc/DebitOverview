@@ -1,0 +1,19 @@
+{
+	d: [{
+		ProjectID: 146,
+		ProjectName: "HipFact",
+		CustomerID: 101,
+		CustomerName: "Område Sahlgrenska",
+		LastDebited: "/Date(1198800000000)/",
+		NumberOfHours: 3861,
+		TotalDebit: 2323740
+	}, {
+		ProjectID: 906,
+		ProjectName: "Webbplats",
+		CustomerID: 128,
+		CustomerName: "Grafiska AB",
+		LastDebited: "/Date(1195776000000)/",
+		NumberOfHours: 59,
+		TotalDebit: 42480
+	}]
+}

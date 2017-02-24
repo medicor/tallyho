@@ -1,4 +1,5 @@
-﻿
+/* globals Ext */
+
 /// <reference Path="../ext-js/adapter/ext/ext-base.js"/>
 /// <reference path="../ext-js/ext-all-debug.js"/>
 
@@ -15,8 +16,8 @@ function createProjectProxy() {
 			update:		{ url: 'DataService.svc/ProjectSet', method: 'MERGE' },
 			destroy:	{ url: 'DataService.svc/ProjectSet', method: 'DELETE' }
 		}
-	})
-};
+	});
+}
 
 function createProjectReader() {
 	return new Ext.data.JsonReader({
@@ -28,15 +29,15 @@ function createProjectReader() {
 			{name: 'ProjectName',	type: 'string'},
 			{name: 'Purpose',		type: 'string'}
 		]
-	})
-};
+	});
+}
 
 function createProjectWriter() {
 	return new Ext.data.JsonWriter({
 		returnJson: true,
 		writeAllFields: false
-	})
-};
+	});
+}
 
 function createProjectStore() {
 	return new Ext.data.Store ({
@@ -60,8 +61,8 @@ function createProjectStore() {
 				}
 			}
 		}
-	})
-};
+	});
+}
 
 function createProjectGridColumnModel() {
 	return new Ext.grid.ColumnModel ({
@@ -72,11 +73,12 @@ function createProjectGridColumnModel() {
 		columns: [
 			{id: 'projectName',		header: "Namn",			dataIndex: 'ProjectName',	width: 140, fixed: true},
 			{id: 'purpose',			header: "Beskrivning",	dataIndex: 'Purpose'},
-			{id: 'projectRate',		header: "Taxa",			dataIndex: 'ProjectRate',	width: 45,  fixed: true, xtype: 'numbercolumn',	format: '000',	align: 'right'} 
-//			{id: 'hoursWorked',		header: "Timmar",	dataIndex: 'HoursWorked',	width: 80, fixed: true, xtype: 'datecolumn',	format: Date.patterns.ISO8601Short } 
+			{id: 'projectRate',		header: "Taxa",			dataIndex: 'ProjectRate',	width: 45,  fixed: true, xtype: 'numbercolumn',	format: '000',	align: 'left'}
+//			{id: 'hoursWorked',		header: "Timmar",	dataIndex: 'HoursWorked',	width: 80, fixed: true, xtype: 'datecolumn',	format: Date.patterns.ISO8601Short }
 		]
-	})
-} 
+	});
+}
+
 function createProjectGridPanel() {
 	return new Ext.grid.GridPanel({
 		store: createProjectStore(),
@@ -88,19 +90,19 @@ function createProjectGridPanel() {
 			forceFit: true
 		},
 		selModel: new Ext.grid.RowSelectionModel ({
-			singleSelect: true, 
+			singleSelect: true,
 			moveEditorOnEnter: false
 		}),
 		listeners: {
 			rowclick: function() {
 				Ext.getCmp('deleteProjectButton').enable();
 			},
-			rowdblclick: function (aGrid, aRowIndex, anEvent) {
+			rowdblclick: function () {
 				Ext.getCmp('browseProjectButton').handler();
 			}
 		}
-	})	
-};
+	});
+}
 
 function createProjectGridWindow (aContainer, aProject) {
 	var n = 0;
@@ -138,8 +140,7 @@ function createProjectGridWindow (aContainer, aProject) {
 			text: 'Registrera ny',
 			iconCls: 'IconProjectsInsert',
 			disabled: true,
-			handler: function(b,e) {
-				Ext.MessageBox.alert(e);
+			handler: function() {
 			}
 		}, {
 			xtype: 'tbseparator'
@@ -148,8 +149,7 @@ function createProjectGridWindow (aContainer, aProject) {
 			text: 'Ta bort',
 			iconCls: 'IconProjectsDelete',
 			disabled: true,
-			handler: function(b,e) {
-				;
+			handler: function() {
 			}
 		}],
 		listeners: {
@@ -163,4 +163,4 @@ function createProjectGridWindow (aContainer, aProject) {
 			}
 		}
 	});
-};
+}

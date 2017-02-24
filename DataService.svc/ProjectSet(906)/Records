@@ -1,0 +1,21 @@
+{
+	d: [{
+		"_id": "522b25e5d053b116789b7214",
+		"RecordID": 13562,
+		"ProjectID": 906,
+		"InvoiceID": null,
+		"PerformedAt": "2007-10-25T22:00:00.000Z",
+		"HoursWorked": 27,
+		"CurrentRate": 720,
+		"Notation": "Webbplats BOA"
+	}, {
+		"_id": "522b25e5d053b116789b7215",
+		"RecordID": 13563,
+		"ProjectID": 906,
+		"InvoiceID": null,
+		"PerformedAt": "2007-11-22T23:00:00.000Z",
+		"HoursWorked": 32,
+		"CurrentRate": 720,
+		"Notation": "Webbplats NARA"
+	}]
+}

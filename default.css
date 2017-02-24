@@ -1,10 +1,10 @@
 /*
  * Copyright(c) 2010 Medicor AB
  */
- 
+
 html *					{ font-family: "Segoe UI","Lucida Grande",Arial,sans-serif /*"Georgia", "Times", "Serif"*/; font-size: 12px; }
 input:focus				{ outline: 1px solid #FE9; }
- 
+
 .Workspace				{ background: #F7EFEB url(images/LogoApplication.png) no-repeat bottom right; }
 .VersionStamp			{ color: #FFF; padding: 5px 10px; position: absolute; bottom: 10px; right: 10px; border-radius: 10px; }
 .VersionStamp a			{ color: #FFF; text-decoration: none; }

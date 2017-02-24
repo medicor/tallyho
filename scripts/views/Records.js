@@ -1,4 +1,5 @@
-﻿
+/* globals Ext */
+
 /// <reference Path="../../ext-js/adapter/ext/ext-base.js"/>
 /// <reference path="../../ext-js/ext-all.js"/>
 
@@ -15,8 +16,8 @@ function createRecordProxy() {
 			update:		{ url: 'DataService.svc/RecordSet', method: 'MERGE' },
 			destroy:	{ url: 'DataService.svc/RecordSet', method: 'DELETE' }
 		}
-	})
-};
+	});
+}
 
 function createRecordReader() {
 	return new Ext.data.JsonReader({
@@ -24,20 +25,20 @@ function createRecordReader() {
 		root: 'd',
 		fields: [
 			{name: 'RecordID',		type: 'int'},
-			{name: 'PerformedAt',	type: 'date', dateFormat: 'M$'},
+			{name: 'PerformedAt',	type: 'date'},
 			{name: 'HoursWorked',	type: 'int'},
 			{name: 'CurrentRate',	type: 'int'},
 			{name: 'Notation',		type: 'string'}
 		]
-	})
-};
+	});
+}
 
 function createRecordWriter() {
 	return new Ext.data.JsonWriter({
 		returnJson: true,
 		writeAllFields: false
-	})
-};
+	});
+}
 
 function createRecordStore() {
 	return new Ext.data.Store ({
@@ -61,47 +62,47 @@ function createRecordStore() {
 				}
 			}
 		}
-	})
-};
+	});
+}
 
 function createRecordGridColumnModel() {
 	return new Ext.grid.ColumnModel ({
 		defaults: {
 //			editor: new Ext.form.TextField(),
+	    	sortable: true,
 			menuDisabled: true
 		},
 		columns: [
 			{id: 'notation',		header: "Notering",	dataIndex: 'Notation'},
-			{id: 'performedAt',		header: "Utfört",	dataIndex: 'PerformedAt',	width: 80, fixed: true, xtype: 'datecolumn',	format: Date.patterns.ISO8601Short}, 
-			{id: 'hoursWorked',		header: "Timmar",	dataIndex: 'HoursWorked',	width: 60, fixed: true, xtype: 'numbercolumn',	format: '000',	align: 'right'}, 
-			{id: 'currentRate',		header: "Taxa",		dataIndex: 'CurrentRate',	width: 60, fixed: true, xtype: 'numbercolumn',	format: '0000',	align: 'right'}
+			{id: 'performedAt',		header: "Utfört",	dataIndex: 'PerformedAt',	width: 80, fixed: true, xtype: 'datecolumn',	format: Date.patterns.ISO8601Short},
+			{id: 'currentRate',		header: "Taxa",		dataIndex: 'CurrentRate',	width: 60, fixed: true, xtype: 'numbercolumn',	format: '0000',	align: 'right'},
+			{id: 'hoursWorked',		header: "Timmar",	dataIndex: 'HoursWorked',	width: 60, fixed: true, xtype: 'numbercolumn',	format: '000',	align: 'left'}
 		]
-	})
-} 
+	});
+}
 function createRecordGridPanel() {
 	return new Ext.grid.GridPanel({
 		store: createRecordStore(),
-		colModel: createRecordGridColumnModel(),
-		frame: false,
 		loadMask: true,
 		border: false,
-		viewConfig: {
+		colModel: createRecordGridColumnModel(),
+   		viewConfig: {
 			forceFit: true
 		},
 		selModel: new Ext.grid.RowSelectionModel ({
-			singleSelect: true, 
+			singleSelect: true,
 			moveEditorOnEnter: false
 		}),
 		listeners: {
 			rowclick: function() {
 				Ext.getCmp('deleteRecordButton').enable();
 			},
-			rowdblclick: function (aGrid, aRowIndex, anEvent) {
+			rowdblclick: function () {
 				Ext.getCmp('browseRecordButton').handler();
 			}
 		}
-	})	
-};
+	});
+}
 
 function createRecordGridWindow (aContainer, aProject) {
 	var n = 0;
@@ -117,7 +118,6 @@ function createRecordGridWindow (aContainer, aProject) {
 		minWidth: 420,
 		minHeight: 200,
 		constrain: true,
-		plain: true,
 		collapsible: true,
 		closable: true,
 		iconCls: 'IconRecords',
@@ -140,7 +140,6 @@ function createRecordGridWindow (aContainer, aProject) {
 			iconCls: 'IconRecordsInsert',
 			disabled: true,
 			handler: function(b,e) {
-				Ext.MessageBox.alert(e);
 			}
 		}, {
 			xtype: 'tbseparator'
@@ -150,7 +149,6 @@ function createRecordGridWindow (aContainer, aProject) {
 			iconCls: 'IconRecordsDelete',
 			disabled: true,
 			handler: function(b,e) {
-				;
 			}
 		}],
 		listeners: {
@@ -164,7 +162,7 @@ function createRecordGridWindow (aContainer, aProject) {
 			}
 		}
 	});
-};
+}
 
 function createRecordFormPanel (aRecord) {
 	return new Ext.form.FormPanel ({
@@ -245,8 +243,8 @@ function createRecordFormPanel (aRecord) {
 				t.getForm().loadRecord(aRecord);
 			}
 		}
-	})	
-};
+	});
+}
 
 function createRecordFormDialog (aRecord, aTitle) {
 	return new Ext.Window ({
@@ -265,19 +263,19 @@ function createRecordFormDialog (aRecord, aTitle) {
             text: 'Spara'
         },{
             text: 'Avbryt',
-            handler: function(t,e) {
+            handler: function() {
 				this.ownerCt.ownerCt.close();
 			}
         }],
 		listeners: {
-			beforeshow: function(t) {
+			beforeshow: function() {
 				this.center();
 				this.setPosition(this.x, this.y-100);
 			}
 		}
 
-	})
-};
+	});
+}
 
 /*
 Ext.reg('recordstore', RecordGrid);
