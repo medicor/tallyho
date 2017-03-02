@@ -267,7 +267,7 @@ Ext.onReady(function() {
 	//	Ext.get("login-form-box").boxWrap();
 	var createLoginPanel = function (aWorkerStore) {
 		var myPanel;
-		
+
 		return myPanel = new Ext.form.FormPanel ({
 			bodyStyle: 'padding: 20px',
 			labelAlign: 'top',
@@ -404,6 +404,7 @@ Ext.onReady(function() {
 	s.proxy.conn.method = 'GET';
 	s.load({
 		callback: function(aWorker) {
+			/*
 			if (aWorker.length == 0) {
 				var p = createLoginPanel(s);
 				contentPanel.add(p);
@@ -416,6 +417,25 @@ Ext.onReady(function() {
 				//TODO: Load Company object through Ajax call?
 				sidebarPanel.load();
 			}
+			*/
+			// IN DEMO MODE.
+			var p = createLoginPanel(s);
+			contentPanel.add(p);
+			contentPanel.doLayout();
+			p.getEl().center(contentPanel.getEl());
+			p.getEl().move('up', 500, false);
+			p.getEl().show();
+			p.getEl().move('down', 400, {duration: 1, easing: 'bounceOut'});
+			Ext.getCmp('myUsername').setValue('DEMO');
+			Ext.getCmp('myPassword').setValue('DEMO');
+			// setTimeout(function() {
+			// 	setTimeout(function() {
+			// 		p.destroy();
+			// 		sidebarPanel.load();
+			// 	}, 500)
+			// 	Ext.getCmp('myUsername').setValue('DEMO');
+			// 	Ext.getCmp('myPassword').setValue('DEMO');
+			// }, 1500)
 		}
 	});
 });
