@@ -14,7 +14,7 @@
     "tests"
   ],
   "dependencies": {
-    "polymer": "Polymer/polymer#master",
+    "polymer": "~1",
     "app-route": "PolymerElements/app-route#master",
     "iron-ajax": "PolymerElements/iron-ajax#master",
     "iron-icons": "PolymerElements/iron-icons#master",
