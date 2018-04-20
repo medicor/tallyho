@@ -1,6 +1,6 @@
 {
   "name": "tallyho",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "authors": [
     "Roger Salomonsson <roger@medicor.se>"
   ],
@@ -15,22 +15,22 @@
   ],
   "dependencies": {
     "polymer": "~1",
-    "app-route": "PolymerElements/app-route#master",
-    "iron-ajax": "PolymerElements/iron-ajax#master",
-    "iron-icons": "PolymerElements/iron-icons#master",
-    "iron-selector": "PolymerElements/iron-selector#master",
-    "neon-animation": "PolymerElements/neon-animation#master",
-    "paper-material": "PolymerElements/paper-material#master",
-    "paper-styles": "PolymerElements/paper-styles#master",
-    "paper-toast": "PolymerElements/paper-toast#master",
-    "paper-button": "PolymerElements/paper-button#master",
-    "paper-dialog": "PolymerElements/paper-dialog#master",
-    "paper-drawer-panel": "PolymerElements/paper-drawer-panel#master",
-    "paper-header-panel": "PolymerElements/paper-header-panel#master",
-    "paper-toolbar": "PolymerElements/paper-toolbar#master",
-    "paper-item": "PolymerElements/paper-item#master",
-    "paper-menu": "PolymerElements/paper-menu#master",
-    "firebase-element": "GoogleWebComponents/firebase-element#master",
-    "paper-datatable": "David-Mulder/paper-datatable#master"
+    "app-route": "PolymerElements/app-route#~1",
+    "iron-ajax": "PolymerElements/iron-ajax#~1",
+    "iron-icons": "PolymerElements/iron-icons#~1",
+    "iron-selector": "PolymerElements/iron-selector#~1",
+    "neon-animation": "PolymerElements/neon-animation#~1",
+    "paper-material": "PolymerElements/paper-material#~1",
+    "paper-styles": "PolymerElements/paper-styles#~1",
+    "paper-toast": "PolymerElements/paper-toast#~1",
+    "paper-button": "PolymerElements/paper-button#~1",
+    "paper-dialog": "PolymerElements/paper-dialog#~1",
+    "paper-drawer-panel": "PolymerElements/paper-drawer-panel#~1",
+    "paper-header-panel": "PolymerElements/paper-header-panel#~1",
+    "paper-toolbar": "PolymerElements/paper-toolbar#~1",
+    "paper-item": "PolymerElements/paper-item#~1",
+    "paper-menu": "PolymerElements/paper-menu#~1",
+    "firebase-element": "GoogleWebComponents/firebase-element#~1",
+    "paper-datatable": "David-Mulder/paper-datatable#latest"
   }
 }
